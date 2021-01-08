@@ -397,10 +397,11 @@ chinalife:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://9.7.22.6:8091/eurekaserveralone/eureka/
+#      defaultZone: http://localhost:8761/eureka/
     #register-with-eureka: false
   instance:
     prefer-ip-address: true
-    hostname: ${spring.cloud.client.ip-address}
+    hostname: ${spring.cloud.client.ipAddress}
     instance-id: ${eureka.instance.hostname}:${server.port}:${spring.application.name}
 name: newclaim-applicationtest

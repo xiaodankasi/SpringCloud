@@ -401,6 +401,6 @@ eureka:
     #register-with-eureka: false
   instance:
     prefer-ip-address: true
-    hostname: ${spring.cloud.client.ipAddress}
+    hostname: ${spring.cloud.client.ip-address}
     instance-id: ${eureka.instance.hostname}:${server.port}:${spring.application.name}
 name: newclaim-applicationtest

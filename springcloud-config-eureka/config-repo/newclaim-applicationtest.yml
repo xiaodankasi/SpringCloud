@@ -397,7 +397,7 @@ chinalife:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://9.7.22.6:8091/eurekaserveralone/eureka/
+      defaultZone: http://localhost:8761/eureka/
     #register-with-eureka: false
   instance:
     prefer-ip-address: true

@@ -1,0 +1,406 @@
+app:
+  server:
+    port: 6001
+  redis:
+    model: standalone
+    host: 9.23.27.86
+    port: 6379
+    password: rG!2teS*0dC@iXs
+    database: 1
+    master: 
+    sentinelHostAndPorts: 
+    clusterNodes:
+    maxTotal: 1500
+    maxIdle: 1000
+    maxWaitMillis: 3000
+    session: 
+      model: standalone
+      host: 9.23.27.86
+      port: 6379
+      password: rG!2teS*0dC@iXs
+      database: 1
+      master: 
+      sentinelHostAndPorts: 
+      clusterNodes:
+      maxTotal: 1500
+      maxIdle: 1000
+      maxWaitMillis: 3000
+    basecode:
+      mode: standalone
+      host: 9.23.27.86
+      port: 6379
+      password: rG!2teS*0dC@iXs
+      usePool: true
+      database: 1
+      master:
+      sentinelHostAndPorts:
+      maxTotal: 1500
+      maxIdle: 1000
+      maxWaitMillis: 3000
+      testOnBorrow: true
+      clusterNodes:
+    rbac:
+      mode: standalone
+      host: 9.23.27.86
+      port: 6379
+      password: rG!2teS*0dC@iXs
+      usePool: true
+      database: 1
+      master:
+      sentinelHostAndPorts:
+      maxTotal: 1500
+      maxIdle: 1000
+      maxWaitMillis: 3000
+      testOnBorrow: true
+      clusterNodes:
+  rabbitmq:
+    host: 9.23.27.88
+    username: admin1
+    password: admin1
+    port: 5672
+  mongo:
+    host: localhost
+    port: 27017
+  kafka:
+    producer:
+      bootstrap:
+        servers: localhost:9092
+    consumer:
+      bootstrap:
+        servers: localhost:9092
+  mail:
+    host: smtp.163.com
+    username: 13609619603@163.com
+    password: stp123
+    fromMail: 13609619603@163.com
+    fromName: hujs
+  elasticsearch:
+    cluster-nodes: localhost:9200
+  solr-client:
+    url: http://locahost:8983/solr
+  content:
+    path: content
+  boot:
+    admin:
+      url: http://localhost:6666
+claim:
+  basecode:
+    status:
+      effective: Effective
+      discarded: Discarded
+  # 采集基座系统地址
+  collectSystem:
+    host: http://9.1.183.131
+    port: 7001
+    features:
+      # 查询采集任务
+      taskQuery: /bmng/task/appBizTask/getLPTaskRelationList
+      # 关联采集任务
+      taskRelate: /bmng/task/appBizTask/reportNumberRelation
+      # 查询已关联任务
+      queryRelated: /bmng/task/appBizTask/selectByReportNumber 
+  # 农险理赔外部接口
+  interfUrl:
+    prpallUri: http://9.23.28.25
+    paymentUri: http://9.23.28.234:7001
+    imageUri: http://9.1.121.35:7011  
+  # 湖南监管推数公钥
+  dockHN:
+    pubKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnCpkSVDw1TdRVOJP6uPRMkHPBysJAElBUi1CpxRE1B37fVlIlLJ+OZ6gpAIGMgDtutmjLT5+Ayt3xjD5ebF4WUEuciFfaup6EOZZt9hj5WCG96uqDurXBJBF4qNb16diV22PGuxbB/sfABY+jneDSZF4h0tEcjlL4HaJh0jLTgy1cC+ySU2oYc2m4Vo8dw1lpf+w3Y5RXAzctEXF5tfijGemMgJUtHdurzPhzsjIWY9KvUmVHs6F8pQ0upi7DDBpXI6M6cNppzbNzBTw6dsq0LiwDai7+kevo+KOpAj0eLQwCPeLquq/nYsfbSYe4asHtXpDT5y6tWNE7WCYza0+ewIDAQAB
+  #全文检索
+  elasticsearch: 
+    host: 9.23.27.87
+    port: 9300
+    poolSize: 5
+    nodes: node-1
+    cluster-nodes: 9.23.27.87:9300
+    cluster-name: elasticsearch
+    repositories: 
+      enabled: true
+    splitSize: 1000
+    user: elastic:eG!2tlS*0aC@sXt
+    elasticCaPath: rsa/elastic-certificates.p12
+  rabbitmq:
+    businessexchange: chinalife.product.datasync.exchange
+    businessqueue: chinalife.productfactory.datasync.newclaim.queue
+    businessqueuebindkey: chinalife.productfactory.datasync.newclaim.queue
+    maxconsumercount: 5
+    basenum: 2
+    mqincrelong: increlong;
+    oneSecond: 1000
+    claimEsbusinessexchange: chinalife.claimes.datasync.exchange #理赔全文检索交换机
+    claimEsbusinessqueue: chinalife.claimes.datasync.newclaim.queue #理赔全文检索队列
+    claimEsbusinessqueuebindkey: chinalife.claimes.datasync.newclaim.queue #理赔全文检索队列
+    interfBusinessExchange: chinalife.interf.datasync.exchange
+    interfQueue: chinalife.interf.datasync.newclaim.queue
+    interfQueueKey: chinalife.interf.datasync.newclaim.queue
+    datasyncexchange: chinalife.hr.core.datasync.exchange
+    datasyncqueue: chinalife.hr.datasync.newclaim.queue
+    datasyncqueuebindkey: chinalife.hr.datasync.newclaim.queue
+    userPermissionGroupExchange: chinalife.rbac.userassignment.exchange
+    userPermissionGroupQueue: chinalife.rbac.userassignment.newclaim.queue
+    userPermissionGroupBindkey: chinalife.rbac.userassignment.newclaim.queue
+    claimEsbusinessexchangeCar: chinalife.claimescar.datasync.exchange
+    claimEsbusinessqueueCar: chinalife.claimescar.datasync.newclaimcar.queue
+    claimEsbusinessqueuebindkeyCar: chinalife.claimescar.datasync.newclaimcar.queue
+    interfBusinessExchangeNew: chinalife.claim.rabbitmq.interfBusinessExchangeNewTT
+    interfQueueNew: chinalife.claim.rabbitmq.interfQueueNewTT
+    interfKeyNew: chinalife.claim.rabbitmq.interfKeyNewTT
+  knowledge:
+    ip: 9.23.27.160
+    categoryids: 
+  router:
+    #短信(webservice, 用axis1实现，测试地址)
+    sms:
+      url: http://9.23.33.50:7001/wschinalife/services/SmsService
+      systemId: B106
+      password: C6777B6654
+    sign:
+      host: 9.23.16.109 
+      port: 8000
+      timeout: 300
+      maxPoolSize: 50
+      encCert: 
+      encoding:  
+      subject: CN=051@中国人寿财产保险股份有限公司@771093449-X@3,OU=Organizational-2,OU=dianju,O=CFCA SM2 OCA1,C=CN
+      digestAlgo: SHA1
+      needCert: true
+  workbenchUrl:
+    sessionUrl: http://9.23.28.25/workbench/controller/workbench/login/findSsoUserBySessionId
+    getSession: http://9.23.28.25/workbench/controller/workbench/login/getSessionId
+  batch:
+    batchStore:
+      baseNum: 500  
+  cccsystem:
+    path: c:/chinalife/ccc
+  gpssystem:
+    path: c:/chinalife/gps
+  oasystem:
+    path: c:/chinalife/oa
+  oacarsystem:
+    path: c:/chinalife/oa
+  selfclaimsystem:
+    path: c:/chinalife/selfclaimsystem
+  dsclaimsystem:
+    path: c:/chinalife/dsclaimsystem
+# ilog的url
+ilog:
+  underwrite:
+    url: http://9.23.27.148:6001/undwrtRuleService/services/restful/claimRule/checkUnderwriteRule
+  claimloss:
+    url: http://9.23.27.148:6001/undwrtRuleService/services/restful/claimRule/findClaimLossInfo
+  underwritenocar:
+    url: http://9.23.27.149:6001/nonAgriculturalILogService/services/restful/claimRule/checkUnderwriteRule    
+  ilogUnderwriteUrl :
+    url: http://9.23.27.149:6001/claimRuleManage/services/restful/claimRule/carCheckClaimRule
+  checkclaimrulenocar:
+    url: http://9.23.27.149:6001/claimRuleManage/services/restful/claimRule/checkClaimRule
+  ilog.underwritenocarTest.url :
+    url: http://9.23.27.149:7001/claimRuleManage/services/restful/claimRule/checkClaimRule  
+  ilogUnderwriteCarUrl:
+    url : http://9.23.27.149:7001/claimRuleManage/services/restful/claimRule/carCheckClaimRule
+  claimlossnew:
+    url: http://9.23.27.148:6001/undwrtRuleService/services/restful/claimRule/findNewClaimLossInfo
+# 是否调用微服务标志 true 是 false 否 使用httpClient
+micro-services: false
+sendClaim:
+  sendClaimStatusUrl :
+    url : http://9.1.120.94:7001/selfClaim/services/sendClaimStatus
+queryClaim :
+  queryClaimByCaseNumberCar :
+    url : http://9.1.120.94:7001/selfClaim/services/queryClaim
+queryCase :
+  scheduleToSelfClaimCar :
+    url : http://9.1.120.94:7001/selfClaim/services/queryCase   
+ShangHaiRoad :
+  url : http://9.1.183.89:7001/claim_shroad/
+FastDeal :
+  selfHelpClaimCarUrl :
+    url :  http://9.1.120.94:7001/selfClaim/plugin/claim/claim.do     
+  
+vat:
+  authenticate:
+    userCode: VAT
+    passWord: E10ADC3949BA59ABBE56E057F20F883E
+    systemCode: VAT
+vatServer:
+  url: http://9.1.165.128:9060/servicemgr/services/vatServer
+
+#**********dev**********
+
+#收付系统 (servlet)
+Billcenter:
+  uri: http://9.1.120.78:7001
+  usrId: NewPrpall
+  tokenId: 123456
+
+#单证地址 (servlet)
+Document:
+  uri: http://9.1.120.180:7001
+  usrId: NewPrpall
+  tokenId: 123456
+
+#理赔地址 (servlet)
+Claim:
+  uri: http://9.1.120.182:7021
+  usrId: NewPrpall
+  tokenId: 123456
+
+#再保 (servlet)
+Reins:
+  uri: http://9.1.120.78:7001
+  usrId: PrpallNew
+  tokenId: 1C47D3D7BF1394A1738B4FE4877EA3B2
+
+#销管 (servlet)
+Sales:
+  uri: http://100.250.160.14:7001
+  usrId: saletest
+  tokenId: saletest
+
+#无线pos机 (socket)
+wirelesspos:
+  host: 9.1.120.77
+  port: 7051
+
+#江苏中介 (servlet)
+agencyjs:
+  url: http://9.40.24.111:90/sinoiallService/interfaceServer
+  userCode: GPICJS
+  passWord: 123456
+
+#平台管理系统  (servlet)
+Organ:
+  uri: http://9.1.120.180:7001
+  usrId: NewPrpall
+  tokenId: 123456
+
+#平台管理系统:机构接口调用ESB
+ESBOrgan:
+  uri: http://9.0.8.58:16602
+  usrId: NewPrpall
+  tokenId: 123456
+
+#IT运维管理系统  (webservice， jdk自带的jws实现)
+ITSM:
+  url: http://9.1.3.40:8080/arsys/WSDL/public/itsm-appnew01/CL_RTX_Request_WS
+
+#SAP财务系统   (webservice， axis1实现)
+SAP:
+  url: http://100.250.160.7:8000/sap/bc/srt/rfc/sap/zfi_basecode/300/zfi_basecode/zfi_basecode
+  username: wangwei
+  password: 12345678
+
+#统一用户管理 -人员管理 (servlet)
+UIM:
+  uri: http://9.23.29.10:7001
+  usrId: admin1
+  tokenId:
+  personSearch:
+    svcUrl: http://9.23.29.10:7001/UAMService/SearchUserByIdcard
+    svcName: UIMServiceForPersonSearch
+    svcCode: UIM-REST-00010
+    svcVer: 1.0
+    oriSys: UIM
+    userId: b3e76576-71cd-4ae0-844a-bdb07300a022
+    tokenId: XEDFERF210C
+    connectTimeOut: 5000
+    readTimeOut: 5000
+  newPersonSearch:
+    searchUrl: http://9.23.29.10:7001/UAMService/SearchUserByIdcard
+    appId: b3e76576-71cd-4ae0-844a-bdb07300a022
+
+#资金管理系统 (webservice，CXF实现)
+ITMS:
+  uri: http://9.1.120.21:7001/iTMS_FUND/WebService/CNAPSQuery?WSDL
+
+#IT运维管理系统 (webservice，CXF实现)
+ITSMCLPC:
+  requestUrl: http://9.1.12.12:8080/arsys/services/ARService?server=zzx-itsmapp&webService=CL_WX_Request_Core
+  knowledgeUrl: http://9.1.12.12:8080/arsys/services/ARService?server=zzx-itsmapp&webService=CL_WX_Knowledge_Core
+  username: OAcreate
+  password: OAcreate
+
+#客户管理系统 (webservice，CXF实现)
+ECIF:
+  uri: http://9.1.120.123:7021/CLPCECIF/services/ECIFServicesPort?wsdl
+  user:
+    policyCenter: 57
+    quotationCenter: 59
+    workBench: 60
+  passWord: QAZWSXEDC
+
+#北京意外险 (webservice， axis1实现)
+Accident:
+  person:
+    url: http://9.1.57.146:7702/acc/webservice/AccidentWebService?wsdl
+    user: clpc_test
+    password: 111111
+    pageSize: 100
+  group:
+    url: http://9.1.57.146:7703/acc/webservice/AccidentWebService?wsdl
+    user:
+    password:
+#北京健康险平台  (webservice， axis1实现)
+BJhealthPlatform:
+  url: http://9.1.57.145:7701/circauto/webservice/InsuranceWebService?wsdl
+  userName: clpc_test
+  password: 111111
+  pageSize: 100
+
+#键值对数据库mongoDB配置
+mongodb:
+  serverHost: 9.23.28.75
+  serverPort: 27000
+  database: nhxruletestlogdb
+  userName: ruletestloguser
+  password: p0o9i8u7y6
+
+  multiServerHosts:
+  connectionsPerHost: 20
+  threadsAllowedToBlockForConnectionMultiplier: 50
+  maxWaitTime: 120000
+  connectTimeout: 120000
+  socketKeepAlive: true
+  socketTimeout: 0
+
+
+#大屏显示接口 (webservice， axis2实现)
+rtpmmessage:
+  url: http://9.23.23.71:8080/rtpmtest/services/rtpmmessage
+
+#ODS,统计数据查询服务  (webservice， axis1实现)
+ODS:
+  url: http://9.1.9.144:7001/StatisticalQueryServer/services/StatisticalWebService
+
+queryPatientInfo:
+  queryPatientInfoByMidpMainInfo:
+    url: http://9.1.183.45:7001/supervise/controller/ciplatform/ciplatform/queryPatientInfo
+queryHisPatientInfo:
+  queryHisPatientInfoByMidpMainInfo:
+    url: http://9.1.183.45:7001/supervise/controller/ciplatform/ciplatform/queryHisPatientInfo
+queryDetailInfo:
+  queryDetailInfoByMedicalInfoReq:
+    url: http://9.1.183.45:7001/supervise/controller/ciplatform/ciplatform/queryDetailInfo
+endCaseInfoUpload:
+  endCaseInfoUploadByMidpMainInfo:
+    url: http://9.1.183.45:7001/supervise/controller/ciplatform/ciplatform/endCaseInfoUpload
+readPic:
+  readPicByMidpMainInfo:
+    url: http://9.1.183.45:7001/supervise/controller/ciplatform/ciplatform/readPic
+chinalife:
+  newclaim:
+    registsync:
+      exchange: chinalife.newclaim.registsync.exchange
+      key: chinalife.newclaim.registsync.key
+      queue: chinalife.newclaim.registsync.queue
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://9.7.22.6:8091/eurekaserveralone/eureka/
+    #register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ipAddress}
+    instance-id: ${eureka.instance.hostname}:${server.port}:${spring.application.name}
+name: newclaim-applicationtest
